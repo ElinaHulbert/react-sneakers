@@ -1,7 +1,8 @@
 import React from "react";
-import Card from "./components/Card";
-import Header from "./components/Header";
-import Drawer from "./components/Drawer";
+import Card from "./components/Card/index.js";
+import Header from "./components/Header.js";
+import Drawer from "./components/Drawer.js";
+import { SneakersList } from "./components/Fetch.js";
 
 const arr = [ {name: "Nike Kyrie Flytrap IV", price: "1600", imageUrl: "/img/sneakers/s1.png"},
               {name: "Nike Lebron XVIII Low", price: "1800", imageUrl: "/img/sneakers/s2.png"},
@@ -34,6 +35,7 @@ function App() {
               onFavClick={()=>console.log("Added to fav")}
               onAddClick={()=>console.log(obj)}/>))
           }
+          <SneakersList/>
         </div> 
       </div>
     </div>
