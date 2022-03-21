@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import Render from "./components/Render";
 
 
-export const SneakersList = () => {
+const Fetch = () => {
   const [sneakers, setSneakers] = useState([]);
-
+  
   useEffect(() => {
     fetch("http://localhost:8080/sneakers", {
       headers: {
@@ -20,12 +21,15 @@ export const SneakersList = () => {
         console.error(err);
       });
   }, []);
-
+  
   return (
-    <ul>
-      {sneakers.map((sneakers) => (
-        console.log("result: ", sneakers)
-      ))}
-    </ul>
+    <div>
+        <Render sneakers={sneakers}/>
+    </div>
   );
 };
+
+
+
+
+export default Fetch;

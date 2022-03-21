@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import App from './App.js';
+import Fetch from './Fetch.js';
 import "macro-css"; 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Fetch />
   </React.StrictMode>,
   document.getElementById('root')
 );
