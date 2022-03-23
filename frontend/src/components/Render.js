@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import React from "react";
+import axios from "axios";
 import Card from "./Card/index.js";
 import Header from "./Header.js";
 import Drawer from "./Drawer.js";
-import React from "react";
 
 const Render = (props) =>{
 const data = props.sneakers;
@@ -12,6 +13,7 @@ const [searchValue, setSearchValue] = React.useState("");
 
 const onAddToCart = (obj) => {
   setCartItems(prev => [...prev, obj])
+  axios.post("http://localhost:8080/cart", obj);
 };
 
 const onChangeSearchInput = (event) => {

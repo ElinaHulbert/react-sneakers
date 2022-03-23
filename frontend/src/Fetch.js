@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Render from "./components/Render";
 
 
+
 const Fetch = () => {
   const [sneakers, setSneakers] = useState([]);
   
@@ -20,6 +21,8 @@ const Fetch = () => {
       .catch((err) => {
         console.error(err);
       });
+
+    
   }, []);
   
   return (

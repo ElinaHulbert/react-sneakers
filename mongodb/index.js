@@ -9,6 +9,7 @@ mongoClient.connect();
 const db = mongoClient.db("react-sneakers");
 //Picking the collection
 const collection = db.collection("sneakers");
+const collection2 = db.collection("cart");
 const PORT = 8080;
 const app = express();
 const requestLogger = (request, response, next) => {
@@ -50,11 +51,22 @@ app.get("/sneakers", async (request, response) => {
   response.json(sneakers);
 });
 
+app.get("/cart", async (request, response) => {
+  const cart = await collection2.find({}).toArray();
+  response.json(cart);
+});
+
 app.post("/sneakers", async (request, response) => {
   const sneakersPic = request.body;
   await collection.insertOne(sneakersPic);
   response.status(200).end();
   // response.sendStatus(200);
+});
+
+app.post("/cart", async (request, response) => {
+  const cartPic = request.body;
+  await collection2.insertOne(cartPic);
+  response.status(200).end();
 });
 
 app.delete("/sneakers/:sneakersId", async (request, response) => {
