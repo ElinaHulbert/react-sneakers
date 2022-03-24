@@ -1,4 +1,4 @@
-POST http://localhost:8080/sneakers
+POST http://localhost:8080/cart
 Content-Type: application/json
 Accept-Language: sv
 
@@ -6,7 +6,7 @@ Accept-Language: sv
     "_id": "10",
     "name": "Nike Blazer Mid Suede",
     "imageUrl": "/img/sneakers/s10.png",
-    "price": 1900
+    "price": 1400
 }
 
 
@@ -15,7 +15,9 @@ GET http://localhost:8080/sneakers
 
 
 ### DogId can be whatever
-DELETE http://localhost:8080/sneakers/c
+DELETE http://localhost:8080/cart/623c5599dbe160c6fb41cd0b
+
+
 
 ###
 PATCH http://localhost:8080/sneakers/c
