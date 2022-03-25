@@ -3,12 +3,14 @@ import axios from "axios";
 import Card from "./Card/index.js";
 import Header from "./Header.js";
 import Drawer from "./Drawer.js";
+import { Routes, Route, Link } from "react-router-dom";
 
 const Render = (props) => {
   const data = props.sneakers;
   const [cartOpened, setCartOpened] = React.useState(false);
   const [cartItems, setCartItems] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState("");
+  const [favourites, setFavourites] = React.useState([]);
 
   const onAddToCart = (obj) => {
     axios.post("http://localhost:8080/cart", obj);
@@ -26,10 +28,16 @@ const Render = (props) => {
     setCartItems((prev) => prev.filter((item) => item._id !== _id));
   };
 
+  const onAddToFavourite = (obj) => {
+    axios.post("http://localhost:8080/favourite", obj);
+    setFavourites((prev) => [...prev, obj]);
+  };
+
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value);
   };
   console.log(cartItems, " cartItems");
+  console.log(favourites, " favourites");
   return (
     <div className="wrapper clear">
       {cartOpened && (
@@ -79,9 +87,8 @@ const Render = (props) => {
                 price={data.price}
                 imageUrl={data.imageUrl}
                 _id={data._id}
-                onFavClick={() => console.log("Added to fav")}
+                onFavClick={(obj) => onAddToFavourite(obj)}
                 onAddClick={(obj) => onAddToCart(obj)}
-                // onAddClick={(obj) => console.log(obj, " obj")}
               />
             ))}
         </div>

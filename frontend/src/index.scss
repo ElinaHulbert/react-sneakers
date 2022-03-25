@@ -53,17 +53,19 @@ header {
   }
 }
 .overlay {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
 }
 .drawer {
   display: flex;
   flex-direction: column;
   position: absolute;
+  position: fixed;
   width: 420px;
   right: 0;
   height: 100%;
@@ -109,6 +111,22 @@ header {
     img {
       position: absolute;
       right: 30px;
+      top: 21px;
+      transition: transform 0.15s ease-in-out;
+    }
+  }
+}
+.cartEmpty {
+  .greenButton {
+    position: relative;
+    &:hover {
+      img {
+        transform: translateX(-5px);
+      }
+    }
+    img {
+      position: absolute;
+      left: 25px;
       top: 21px;
       transition: transform 0.15s ease-in-out;
     }
