@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import Render from "./components/Render";
 
-
-
 const Fetch = () => {
   const [sneakers, setSneakers] = useState([]);
-  
+
   useEffect(() => {
     fetch("http://localhost:8080/sneakers", {
       headers: {
@@ -21,18 +19,13 @@ const Fetch = () => {
       .catch((err) => {
         console.error(err);
       });
-
-    
   }, []);
-  
+
   return (
     <div>
-        <Render sneakers={sneakers}/>
+      <Render sneakers={sneakers} />
     </div>
   );
 };
-
-
-
 
 export default Fetch;
