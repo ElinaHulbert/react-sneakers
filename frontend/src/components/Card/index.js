@@ -1,5 +1,6 @@
 import styles from "./card.module.scss";
 import React from "react";
+import AppContext from "../../context";
 
 function Card({
   onFavClick,
@@ -10,12 +11,12 @@ function Card({
   _id,
   favourited = false,
 }) {
-  const [isAdded, setIsAdded] = React.useState(false);
+  const { isItemAdded } = React.useContext(AppContext);
+  console.log(title, isItemAdded(_id));
   const [isFav, setIsFav] = React.useState(favourited);
 
   const onClickPlus = () => {
     onAddClick({ title, imageUrl, price, _id });
-    setIsAdded(!isAdded);
   };
   const onClickFav = () => {
     onFavClick({ title, imageUrl, price, _id });
@@ -44,7 +45,7 @@ function Card({
           width={18}
           height={18}
           className={styles.plus}
-          src={isAdded ? "/img/check.svg" : "/img/plus.svg"}
+          src={isItemAdded(_id) ? "/img/check.svg" : "/img/plus.svg"}
           alt="add"
           onClick={onClickPlus}
         />

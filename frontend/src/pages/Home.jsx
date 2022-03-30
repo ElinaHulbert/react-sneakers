@@ -1,6 +1,10 @@
 import Card from "../components/Card/index.js";
-function Home ({data, searchValue, setSearchValue, onChangeSearchInput, onAddToFavourite, onAddToCart}){
-    return(
+
+import React from "react";
+
+function Home ({data, searchValue, setSearchValue, onChangeSearchInput, onAddToFavourite, onAddToCart, favourites}){
+  
+  return(
     <div className="content p-40">
     <div className="d-flex align-center justify-between mb-40">
       <h1>
@@ -41,7 +45,8 @@ function Home ({data, searchValue, setSearchValue, onChangeSearchInput, onAddToF
             _id={data._id}
             onFavClick={(obj) => onAddToFavourite(obj)}
             onAddClick={(obj) => onAddToCart(obj)}
-            
+            // addedCart={isItemAdded(data._id)}
+            favourited={favourites.some(obj=> obj._id === data._id)}
           />
         ))}
     </div>

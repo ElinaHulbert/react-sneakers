@@ -1,5 +1,9 @@
 import Card from "../components/Card/index.js";
-function Favourites ({data, onAddToFavourite}){
+import React from "react";
+import AppContext from "../../src/context.js";
+
+function Favourites (){
+  const {favourites, onAddToFavourite} = React.useContext(AppContext)
     return(
     <div className="content p-40">
     <div className="d-flex align-center justify-between mb-40">
@@ -13,7 +17,7 @@ function Favourites ({data, onAddToFavourite}){
     </div>
 
     <div className="d-flex flex-wrap">
-    {data.map((data) => (
+    {favourites.map((data) => (
           <Card
             key={data._id}
             title={data.name}
@@ -22,6 +26,7 @@ function Favourites ({data, onAddToFavourite}){
             _id={data._id}
             favourited={true}
             onFavClick={onAddToFavourite}
+            
           />
         ))}
     </div>
