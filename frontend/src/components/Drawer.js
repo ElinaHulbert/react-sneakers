@@ -6,6 +6,7 @@ import axios from "axios";
 function Drawer({ onCloseCart, onRemove, items = [] }) {
   const { cartItems, setCartItems } = React.useContext(AppContext);
   const [isOrderCompleted, setOrderCompleted] = React.useState(false);
+  const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0);
 
   const onClickOrder = () => {
     // const obj = Object.assign({}, cartItems);
@@ -63,13 +64,13 @@ function Drawer({ onCloseCart, onRemove, items = [] }) {
                 <li>
                   <span>Total: </span>
                   <div></div>
-                  <b>3200 kr</b>
+                  <b>{totalPrice} kr</b>
                 </li>
 
                 <li>
                   <span>Tax 5%: </span>
                   <div></div>
-                  <b>160 kr</b>
+                  <b>{(totalPrice / 100) * 5} kr</b>
                 </li>
               </ul>
               <button onClick={onClickOrder} className="greenButton">
