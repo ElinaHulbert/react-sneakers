@@ -1,8 +1,12 @@
 import express from "express";
 import mongodb from "mongodb";
 import cors from "cors";
+
+const MONGODB_URL =
+  process.env.MONGODB_URL ||
+  "mongodb+srv://ElinaHulbert:Lolilulela123@cluster0.gxsmo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 //Configuring the MongoClient to talk to our MongoDB
-const mongoClient = new mongodb.MongoClient("mongodb://localhost:27017");
+const mongoClient = new mongodb.MongoClient(MONGODB_URL);
 //connect the client to database
 mongoClient.connect();
 //Grabbing the dogapi database
@@ -13,7 +17,7 @@ const collection2 = db.collection("cart");
 const collection3 = db.collection("favourite");
 const collection4 = db.collection("order");
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const app = express();
 const requestLogger = (request, response, next) => {
   const timestamp = new Date().toISOString();
