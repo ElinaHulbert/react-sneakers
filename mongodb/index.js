@@ -30,7 +30,7 @@ const requestLogger = (request, response, next) => {
 };
 app.use(requestLogger);
 app.use(express.json()); //it's a middleware
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "*" }));
 
 app.get("/sneakers", async (request, response) => {
   const query = request.query;
