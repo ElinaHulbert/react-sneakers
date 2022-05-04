@@ -17,35 +17,42 @@ const Render = (props) => {
   const onAddToCart = (obj) => {
     if (cartItems.find((item) => item._id === obj._id)) {
       setCartItems((prev) => prev.filter((item) => item._id !== obj._id));
-      axios.delete(`http://localhost:8080/cart/${obj._id}`);
+      axios.delete(`https://mern-sneakers-app.herokuapp.com/cart/${obj._id}`);
     } else {
-      axios.post("http://localhost:8080/cart", obj);
+      axios.post("https://mern-sneakers-app.herokuapp.com/cart", obj);
       setCartItems((prev) => [...prev, obj]);
     }
   };
 
   React.useEffect(() => {
-    axios.get("http://localhost:8080/cart").then((res) => {
+    axios.get("https://mern-sneakers-app.herokuapp.com/cart").then((res) => {
       setCartItems(res.data);
     });
-    axios.get("http://localhost:8080/favourite").then((res) => {
-      setFavourites(res.data);
-    });
+    axios
+      .get("https://mern-sneakers-app.herokuapp.com/favourite")
+      .then((res) => {
+        setFavourites(res.data);
+      });
   }, []);
 
   const onRemoveItem = (_id) => {
-    axios.delete(`http://localhost:8080/cart/${_id}`);
+    axios.delete(`https://mern-sneakers-app.herokuapp.com/cart/${_id}`);
     setCartItems((prev) => prev.filter((item) => item._id !== _id));
   };
 
   const onAddToFavourite = async (obj) => {
     try {
       if (favourites.find((favObj) => favObj._id === obj._id)) {
-        axios.delete(`http://localhost:8080/favourite/${obj._id}`);
+        axios.delete(
+          `https://mern-sneakers-app.herokuapp.com/favourite/${obj._id}`
+        );
         setFavourites((prev) => prev.filter((item) => item._id !== obj._id));
       } else {
         console.log(obj, " obj");
-        await axios.post("http://localhost:8080/favourite", obj);
+        await axios.post(
+          "https://mern-sneakers-app.herokuapp.com/favourite",
+          obj
+        );
         setFavourites((prev) => [...prev, obj]);
       }
     } catch (error) {

@@ -5,7 +5,7 @@ const Fetch = () => {
   const [sneakers, setSneakers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/sneakers", {
+    fetch("https://mern-sneakers-app.herokuapp.com/sneakers", {
       headers: {
         "content-type": "application/json",
       },

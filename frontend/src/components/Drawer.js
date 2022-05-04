@@ -11,7 +11,7 @@ function Drawer({ onCloseCart, onRemove, items = [] }) {
   const onClickOrder = () => {
     // const obj = Object.assign({}, cartItems);
     // let _id = Math.floor(Math.random() * 10);
-    axios.post("http://localhost:8080/order", {
+    axios.post("https://mern-sneakers-app.herokuapp.com/order", {
       items: cartItems,
       // _id: _id,
     });
